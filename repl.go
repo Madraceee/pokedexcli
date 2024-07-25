@@ -6,7 +6,7 @@ import (
 	"os"
 )
 
-func StartRepl() {
+func StartRepl(cfg *config) {
 	scanner := bufio.NewScanner(os.Stdin)
 	commands := getCommandMappings()
 	for {
@@ -17,9 +17,11 @@ func StartRepl() {
 		if present == false {
 			fmt.Println("Wrong command")
 		} else {
-			err := command.callback()
+			err := command.callback(cfg)
 			if err != nil {
+				fmt.Println()
 				fmt.Println(err)
+				fmt.Println()
 			}
 		}
 	}
