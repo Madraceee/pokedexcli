@@ -1,6 +1,9 @@
 package main
 
-import "github.com/madraceee/pokedexcli/internal/pokeapi"
+import (
+	"github.com/madraceee/pokedexcli/internal/pokeapi"
+	"time"
+)
 
 type config struct {
 	newURL        *string
@@ -9,7 +12,7 @@ type config struct {
 }
 
 func main() {
-	pokeApi := pokeapi.GetNewClient()
+	pokeApi := pokeapi.GetNewClient(time.Minute * 1)
 	newURL := pokeapi.GetInitialLocationURL()
 	prevURL := ""
 	cfg := config{
