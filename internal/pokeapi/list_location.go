@@ -10,7 +10,7 @@ func GetInitialLocationURL() string {
 }
 
 func (c *PokeAPIClient) GetLocationList(url string) (Locations, error) {
-	body, err := request(url)
+	body, err := c.request(url)
 	if err != nil {
 		return Locations{}, err
 	}

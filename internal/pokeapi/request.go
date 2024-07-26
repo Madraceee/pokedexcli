@@ -6,7 +6,11 @@ import (
 	"net/http"
 )
 
-func request(url string) ([]byte, error) {
+func (c *PokeAPIClient) request(url string) ([]byte, error) {
+	ans, present := c.cache.Get(url)
+	if present == true {
+		return ans, nil
+	}
 
 	res, err := http.Get(url)
 	if err != nil {
@@ -24,5 +28,6 @@ func request(url string) ([]byte, error) {
 		return nil, errors.New("Failed to fetch data")
 	}
 
+	c.cache.Add(url, body)
 	return body, nil
 }
