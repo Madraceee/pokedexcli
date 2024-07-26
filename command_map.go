@@ -5,7 +5,7 @@ import (
 	"fmt"
 )
 
-func commandMap(cfg *config) error {
+func commandMap(cfg *config, parameters ...string) error {
 	if cfg.newURL == nil {
 		return errors.New("No new area")
 	}
@@ -28,7 +28,7 @@ func commandMap(cfg *config) error {
 	return nil
 }
 
-func commandMapb(cfg *config) error {
+func commandMapb(cfg *config, parameters ...string) error {
 	if len(*cfg.prevURL) == 0 {
 		return errors.New("No previous area")
 	}

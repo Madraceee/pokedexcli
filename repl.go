@@ -4,6 +4,7 @@ import (
 	"bufio"
 	"fmt"
 	"os"
+	"strings"
 )
 
 func StartRepl(cfg *config) {
@@ -12,12 +13,13 @@ func StartRepl(cfg *config) {
 	for {
 		fmt.Print("pokedex > ")
 		scanner.Scan()
-		command, present := commands[scanner.Text()]
+		input := strings.Split(scanner.Text(), " ")
+		command, present := commands[input[0]]
 
 		if present == false {
 			fmt.Println("Wrong command")
 		} else {
-			err := command.callback(cfg)
+			err := command.callback(cfg, input[1:]...)
 			if err != nil {
 				fmt.Println()
 				fmt.Println(err)
