@@ -9,6 +9,7 @@ type config struct {
 	newURL        *string
 	prevURL       *string
 	pokeapiClient pokeapi.PokeAPIClient
+	pokemons      map[string]pokeapi.Pokemon
 }
 
 func main() {
@@ -19,6 +20,7 @@ func main() {
 		newURL:        &newURL,
 		prevURL:       &prevURL,
 		pokeapiClient: pokeApi,
+		pokemons:      make(map[string]pokeapi.Pokemon),
 	}
 	StartRepl(&cfg)
 }
