@@ -6,7 +6,7 @@ import (
 )
 
 func GetInitialLocationURL() string {
-	return "https://pokeapi.co/api/v2/location"
+	return "https://pokeapi.co/api/v2/location-area"
 }
 
 func (c *PokeAPIClient) GetLocationList(url string) (Locations, error) {
