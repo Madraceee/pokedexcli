@@ -25,7 +25,7 @@ func commandCatch(cfg *config, parameters ...string) error {
 
 	fmt.Println()
 	fmt.Println("Throwing a Pokeball at pikachu...")
-	if randNumber >= 50 {
+	if randNumber >= 40 {
 		fmt.Println(pokemon.Name + " was caught!")
 		cfg.pokemons[parameters[0]] = pokemon
 	} else {
